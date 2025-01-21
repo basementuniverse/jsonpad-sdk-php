@@ -1,0 +1,16 @@
+{
+    "name": "jsonpad/sdk",
+    "description": "JSONPad SDK for PHP",
+    "type": "library",
+    "require": {
+        "php": ">=8.1",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JSONPad\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "minimum-stability": "stable"
+}
