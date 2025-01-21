@@ -1,7 +1,23 @@
 {
     "name": "jsonpad/sdk",
+    "version": "1.0.0",
     "description": "JSONPad SDK for PHP",
+    "authors": [
+        {
+            "name": "Gordon Larrigan",
+            "email": "gordonlarrigan@gmail.com",
+            "homepage": "https://gordonlarrigan.com"
+        }
+    ],
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git+https://github.com/basementuniverse/jsonpad-sdk-php.git"
+        }
+    ],
     "type": "library",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=8.1",
         "guzzlehttp/guzzle": "^7.0"
@@ -10,7 +26,5 @@
         "psr-4": {
             "JSONPad\\": "src/"
         }
-    },
-    "license": "MIT",
-    "minimum-stability": "stable"
+    }
 }
