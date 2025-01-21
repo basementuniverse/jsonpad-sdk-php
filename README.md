@@ -81,7 +81,6 @@ $jsonpad = new JSONPad(
 - [Fetch an identity](#fetch-an-identity)
 - [Fetch identity stats](#fetch-identity-stats)
 - [Fetch identity events](#fetch-identity-events)
-
 - [Fetch an identity event](#fetch-an-identity-event)
 - [Update an identity](#update-an-identity)
 - [Delete an identity](#delete-an-identity)
