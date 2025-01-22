@@ -1,24 +1,30 @@
 <?php
 
-namespace JSONPad;
+namespace JSONPad\Models;
 
-class User
+use \DateTime;
+
+class Item
 {
     public string $id;
     public DateTime $createdAt;
     public DateTime $updatedAt;
-    public ?DateTime $lastActiveAt;
-    public bool $activated;
-    public string $displayName;
+    public $data;
     public string $description;
+    public string $version;
+    public bool $readonly;
+    public bool $activated;
+    public int $size;
 
     public function __construct(array $data) {
         $this->id = $data['id'];
         $this->createdAt = new DateTime($data['createdAt']);
         $this->updatedAt = new DateTime($data['updatedAt']);
-        $this->lastActiveAt = $data['lastActiveAt'] ? new DateTime($data['lastActiveAt']) : null;
-        $this->activated = $data['activated'];
-        $this->displayName = $data['displayName'];
+        $this->data = $data['data'];
         $this->description = $data['description'];
+        $this->version = $data['version'];
+        $this->readonly = $data['readonly'];
+        $this->activated = $data['activated'];
+        $this->size = $data['size'];
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace JSONPad;
+namespace JSONPad\Models;
 
-use JSONPad\User as User;
+use \DateTime;
+use \JSONPad\Models\User;
 
-class ListModel
+class ItemList
 {
     public string $id;
     public DateTime $createdAt;

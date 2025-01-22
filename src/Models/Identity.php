@@ -1,8 +1,9 @@
 <?php
 
-namespace JSONPad;
+namespace JSONPad\Models;
 
-use JSONPad\User as User;
+use \DateTime;
+use \JSONPad\Models\User;
 
 class Identity
 {

@@ -1,6 +1,8 @@
 <?php
 
-namespace JSONPad;
+namespace JSONPad\Models;
+
+use \DateTime;
 
 class Index
 {

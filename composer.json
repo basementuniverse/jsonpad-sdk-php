@@ -13,7 +13,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "git+https://github.com/basementuniverse/jsonpad-sdk-php.git"
+            "url": "https://github.com/basementuniverse/jsonpad-sdk-php.git"
         }
     ],
     "type": "library",

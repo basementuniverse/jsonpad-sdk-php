@@ -4,12 +4,12 @@ namespace JSONPad;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use JSONPad\Event;
-use JSONPad\Identity;
-use JSONPad\Index;
-use JSONPad\Item;
-use JSONPad\List;
-use JSONPad\User;
+use \JSONPad\Models\Event;
+use \JSONPad\Models\Identity;
+use \JSONPad\Models\Index;
+use \JSONPad\Models\Item;
+use \JSONPad\Models\ItemList;
+use \JSONPad\Models\User;
 
 class JSONPad
 {
@@ -89,7 +89,7 @@ class JSONPad
      */
     public function createList($data) {
         $response = $this->request('POST', '/lists', [], $data);
-        return new JSONPad\List($response);
+        return new ItemList($response);
     }
 
     /**
@@ -100,7 +100,7 @@ class JSONPad
     public function fetchLists($parameters = []) {
         $response = $this->request('GET', '/lists', $parameters);
         $response['data'] = array_map(function($datum) {
-            return new JSONPad\List($datum);
+            return new ItemList($datum);
         }, $response['data']);
         return $response;
     }
@@ -112,7 +112,7 @@ class JSONPad
      */
     public function fetchList($listId) {
         $response = $this->request('GET', "/lists/{$listId}");
-        return new JSONPad\List($response);
+        return new ItemList($response);
     }
 
     /**
@@ -129,7 +129,7 @@ class JSONPad
             if (isset($result['item'])) {
                 return [
                     'relevance' => $result['relevance'],
-                    'item' => new JSONPad\Item($result['item'])
+                    'item' => new Item($result['item'])
                 ];
             }
             return $result;
@@ -155,7 +155,7 @@ class JSONPad
     public function fetchListEvents($listId, $parameters = []) {
         $response = $this->request('GET', "/lists/{$listId}/events", $parameters);
         $response['data'] = array_map(function($datum) {
-            return new JSONPad\Event($datum);
+            return new Event($datum);
         }, $response['data']);
         return $response;
     }
@@ -168,7 +168,7 @@ class JSONPad
      */
     public function fetchListEvent($listId, $eventId) {
         $response = $this->request('GET', "/lists/{$listId}/events/{$eventId}");
-        return new JSONPad\Event($response);
+        return new Event($response);
     }
 
     /**
@@ -179,7 +179,7 @@ class JSONPad
      */
     public function updateList($listId, $data) {
         $response = $this->request('PUT', "/lists/{$listId}", [], $data);
-        return new JSONPad\List($response);
+        return new ItemList($response);
     }
 
     /**
@@ -216,7 +216,7 @@ class JSONPad
                 ? null
                 : $identity['token'] ?? $this->identityToken
         );
-        return new JSONPad\Item($response);
+        return new Item($response);
     }
 
     /**
@@ -240,7 +240,7 @@ class JSONPad
                 : $identity['token'] ?? $this->identityToken
         );
         $response['data'] = array_map(function($datum) {
-            return new JSONPad\Item($datum);
+            return new Item($datum);
         }, $response['data']);
         return $response;
     }
@@ -290,7 +290,7 @@ class JSONPad
                 ? null
                 : $identity['token'] ?? $this->identityToken
         );
-        return new JSONPad\Item($response);
+        return new Item($response);
     }
 
     /**
@@ -344,7 +344,7 @@ class JSONPad
             $parameters
         );
         $response['data'] = array_map(function($datum) {
-            return new JSONPad\Event($datum);
+            return new Event($datum);
         }, $response['data']);
         return $response;
     }
@@ -361,7 +361,7 @@ class JSONPad
             'GET',
             "/lists/{$listId}/items/{$itemId}/events/{$eventId}"
         );
-        return new JSONPad\Event($response);
+        return new Event($response);
     }
 
     /**
@@ -386,7 +386,7 @@ class JSONPad
                 ? null
                 : $identity['token'] ?? $this->identityToken
         );
-        return new JSONPad\Item($response);
+        return new Item($response);
     }
 
     /**
@@ -412,7 +412,7 @@ class JSONPad
                 ? null
                 : $identity['token'] ?? $this->identityToken
         );
-        return new JSONPad\Item($response);
+        return new Item($response);
     }
 
     /**
@@ -438,7 +438,7 @@ class JSONPad
                 ? null
                 : $identity['token'] ?? $this->identityToken
         );
-        return new JSONPad\Item($response);
+        return new Item($response);
     }
 
     /**
@@ -464,7 +464,7 @@ class JSONPad
                 ? null
                 : $identity['token'] ?? $this->identityToken
         );
-        return new JSONPad\Item($response);
+        return new Item($response);
     }
 
     /**
@@ -511,7 +511,7 @@ class JSONPad
                 ? null
                 : $identity['token'] ?? $this->identityToken
         );
-        return new JSONPad\Item($response);
+        return new Item($response);
     }
 
     // ---------------------------------------------------------------------------
@@ -526,7 +526,7 @@ class JSONPad
      */
     public function createIndex($listId, $data) {
         $response = $this->request('POST', "/lists/{$listId}/indexes", [], $data);
-        return new JSONPad\Index($response);
+        return new Index($response);
     }
 
     /**
@@ -538,7 +538,7 @@ class JSONPad
     public function fetchIndexes($listId, $parameters = []) {
         $response = $this->request('GET', "/lists/{$listId}/indexes", $parameters);
         $response['data'] = array_map(function($datum) {
-            return new JSONPad\Index($datum);
+            return new Index($datum);
         }, $response['data']);
         return $response;
     }
@@ -551,7 +551,7 @@ class JSONPad
      */
     public function fetchIndex($listId, $indexId) {
         $response = $this->request('GET', "/lists/{$listId}/indexes/{$indexId}");
-        return new JSONPad\Index($response);
+        return new Index($response);
     }
 
     /**
@@ -605,7 +605,7 @@ class JSONPad
      */
     public function updateIndex($listId, $indexId, $data) {
         $response = $this->request('PATCH', "/lists/{$listId}/indexes/{$indexId}", [], $data);
-        return new JSONPad\Index($response);
+        return new Index($response);
     }
 
     /**

@@ -7,7 +7,7 @@ This package allows you to connect to JSONPad and manage your lists, items, inde
 You can install the SDK using Composer:
 
 ```bash
-composer require basementuniverse/jsonpad-sdk
+composer require jsonpad/sdk
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ Create an instance of the JSONPad SDK and pass in your API token:
 ```php
 require 'vendor/autoload.php';
 
-use JSONPad\JSONPad;
+use \JSONPad\JSONPad;
 
 $jsonpad = new JSONPad('your-api-token');
 ```
@@ -96,7 +96,7 @@ $jsonpad = new JSONPad(
 ### Create a list
 
 ```php
-createList(array $data): JSONPad\List
+createList(array $data): \JSONPad\Models\ItemList
 ```
 
 Example:
@@ -136,7 +136,7 @@ $response = $jsonpad->fetchLists([
 ### Fetch a list
 
 ```php
-fetchList(string $listId): JSONPad\List
+fetchList(string $listId): \JSONPad\Models\ItemList
 ```
 
 Example:
@@ -206,7 +206,7 @@ $response = $jsonpad->fetchListEvents(
 ### Fetch a list event
 
 ```php
-fetchListEvent(string $listId, string $eventId): JSONPad\Event
+fetchListEvent(string $listId, string $eventId): \JSONPad\Models\Event
 ```
 
 Example:
@@ -221,7 +221,7 @@ $event = $jsonpad->fetchListEvent(
 ### Update a list
 
 ```php
-updateList(string $listId, array $data): JSONPad\List
+updateList(string $listId, array $data): \JSONPad\Models\ItemList
 ```
 
 Example:
@@ -251,7 +251,7 @@ $jsonpad->deleteList('3e3ce22b-ec32-4c9d-956b-27ba00f38aa9');
 ### Create an item
 
 ```php
-createItem(string $listId, array $data, array $parameters = [], array $identity = null): JSONPad\Item
+createItem(string $listId, array $data, array $parameters = [], array $identity = null): \JSONPad\Models\Item
 ```
 
 Example:
@@ -316,7 +316,7 @@ $response = $jsonpad->fetchItemsData(
 ### Fetch an item
 
 ```php
-fetchItem(string $listId, string $itemId, array $parameters = [], array $identity = null): JSONPad\Item
+fetchItem(string $listId, string $itemId, array $parameters = [], array $identity = null): \JSONPad\Models\Item
 ```
 
 Example:
@@ -387,7 +387,7 @@ $response = $jsonpad->fetchItemEvents(
 ### Fetch an item event
 
 ```php
-fetchItemEvent(string $listId, string $itemId, string $eventId): JSONPad\Event
+fetchItemEvent(string $listId, string $itemId, string $eventId): \JSONPad\Models\Event
 ```
 
 Example:
@@ -403,7 +403,7 @@ $event = $jsonpad->fetchItemEvent(
 ### Update an item
 
 ```php
-updateItem(string $listId, string $itemId, array $data, array $parameters = [], array $identity = null): JSONPad\Item
+updateItem(string $listId, string $itemId, array $data, array $parameters = [], array $identity = null): \JSONPad\Models\Item
 ```
 
 Example:
@@ -506,7 +506,7 @@ $jsonpad->deleteItem(
 ### Delete part of an item's data
 
 ```php
-deleteItemData(string $listId, string $itemId, array $parameters = [], array $identity = null): JSONPad\Item
+deleteItemData(string $listId, string $itemId, array $parameters = [], array $identity = null): \JSONPad\Models\Item
 ```
 
 Example:
@@ -524,7 +524,7 @@ $itemData = $jsonpad->deleteItemData(
 ### Create an index
 
 ```php
-createIndex(string $listId, array $data): JSONPad\Index
+createIndex(string $listId, array $data): \JSONPad\Models\Index
 ```
 
 Example:
@@ -569,7 +569,7 @@ $response = $jsonpad->fetchIndexes(
 ### Fetch an index
 
 ```php
-fetchIndex(string $listId, string $indexId): JSONPad\Index
+fetchIndex(string $listId, string $indexId): \JSONPad\Models\Index
 ```
 
 Example:
@@ -625,7 +625,7 @@ $response = $jsonpad->fetchIndexEvents(
 ### Fetch an index event
 
 ```php
-fetchIndexEvent(string $listId, string $indexId, string $eventId): JSONPad\Event
+fetchIndexEvent(string $listId, string $indexId, string $eventId): \JSONPad\Models\Event
 ```
 
 Example:
@@ -641,7 +641,7 @@ $event = $jsonpad->fetchIndexEvent(
 ### Update an index
 
 ```php
-updateIndex(string $listId, string $indexId, array $data): JSONPad\Index
+updateIndex(string $listId, string $indexId, array $data): \JSONPad\Models\Index
 ```
 
 Example:
@@ -682,7 +682,7 @@ $jsonpad->deleteIndex(
 ### Create an identity
 
 ```php
-createIdentity(array $data): JSONPad\Identity
+createIdentity(array $data): \JSONPad\Models\Identity
 ```
 
 Example:
@@ -715,7 +715,7 @@ $response = $jsonpad->fetchIdentities([
 ### Fetch an identity
 
 ```php
-fetchIdentity(string $identityId): JSONPad\Identity
+fetchIdentity(string $identityId): \JSONPad\Models\Identity
 ```
 
 Example:
@@ -766,7 +766,7 @@ $response = $jsonpad->fetchIdentityEvents(
 ### Fetch an identity event
 
 ```php
-fetchIdentityEvent(string $identityId, string $eventId): JSONPad\Event
+fetchIdentityEvent(string $identityId, string $eventId): \JSONPad\Models\Event
 ```
 
 Example:
@@ -781,7 +781,7 @@ $event = $jsonpad->fetchIdentityEvent(
 ### Update an identity
 
 ```php
-updateIdentity(string $identityId, array $data): JSONPad\Identity
+updateIdentity(string $identityId, array $data): \JSONPad\Models\Identity
 ```
 
 Example:
@@ -812,7 +812,7 @@ $jsonpad->deleteIdentity('3e3ce22b-ec32-4c9d-956b-27ba00f38aa9');
 ### Register an identity
 
 ```php
-registerIdentity(array $data, array $identity = null): JSONPad\Identity
+registerIdentity(array $data, array $identity = null): \JSONPad\Models\Identity
 ```
 
 Example:
@@ -856,7 +856,7 @@ $jsonpad->logoutIdentity();
 ### Fetch the currently logged in identity
 
 ```php
-fetchSelfIdentity(array $identity = null): JSONPad\Identity
+fetchSelfIdentity(array $identity = null): \JSONPad\Models\Identity
 ```
 
 Example:
@@ -868,7 +868,7 @@ $identity = $jsonpad->fetchSelfIdentity();
 ### Update the currently logged in identity
 
 ```php
-updateSelfIdentity(array $data, array $identity = null): JSONPad\Identity
+updateSelfIdentity(array $data, array $identity = null): \JSONPad\Models\Identity
 ```
 
 Example:
