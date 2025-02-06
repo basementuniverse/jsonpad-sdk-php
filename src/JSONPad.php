@@ -604,7 +604,7 @@ class JSONPad
      * @param array $data Data to update the index with
      */
     public function updateIndex($listId, $indexId, $data) {
-        $response = $this->request('PATCH', "/lists/{$listId}/indexes/{$indexId}", [], $data);
+        $response = $this->request('PUT', "/lists/{$listId}/indexes/{$indexId}", [], $data);
         return new Index($response);
     }
 
